@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinoyDevs", "PinoyDevs.Web\PinoyDevs.csproj", "{64CAA58B-A3BD-4203-BF75-28A92476A1E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|x64.Build.0 = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Debug|x86.Build.0 = Debug|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|x64.ActiveCfg = Release|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|x64.Build.0 = Release|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|x86.ActiveCfg = Release|Any CPU
+		{64CAA58B-A3BD-4203-BF75-28A92476A1E6}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9FFD0CB-F44D-49E1-AD7D-6CC5BFF65F99}
+	EndGlobalSection
+EndGlobal
