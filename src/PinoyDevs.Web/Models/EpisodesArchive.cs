@@ -3,7 +3,7 @@ using Piranha.Models;
 
 namespace PinoyDevs.Models
 {
-    [PageType(Title = "Episodes", IsArchive = true, UsePrimaryImage = false, UseExcerpt = false)]
+    [PageType(Title = "Episodes", IsArchive = true, UsePrimaryImage = true, UseExcerpt = false)]
     [PageTypeRoute(Title = "Default", Route = "/episodes")]
     public class EpisodesArchive : Page<EpisodesArchive>
     {

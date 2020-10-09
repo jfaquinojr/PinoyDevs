@@ -1,10 +1,11 @@
 @page
 @model SinglePostWithComments<EpisodePost>
-@{
-    ViewData["Title"] = !string.IsNullOrEmpty(Model.Data.MetaTitle) ? Model.Data.MetaTitle : Model.Data.Title;
+@{ ViewData["Title"] = !string.IsNullOrEmpty(Model.Data.MetaTitle) ? Model.Data.MetaTitle : Model.Data.Title;
     var hasImage = Model.Data.PrimaryImage.HasValue;
-    var archive = await WebApp.Api.Pages.GetByIdAsync(Model.Data.BlogId);
-}
+    var archive = await WebApp.Api.Pages.GetByIdAsync(Model.Data.BlogId); }
+
+@using Microsoft.AspNetCore.Http.Extensions
+
 @section head {
     @WebApp.MetaTags(Model.Data)
 }
@@ -21,30 +22,26 @@
                 Tags
                 @foreach (var tag in Model.Data.Tags)
                 {
-                    <a href="@archive.Permalink/tag/@tag.Slug">#@tag.Slug</a>
-                }
+    <a href="@archive.Permalink/tag/@tag.Slug">#@tag.Slug</a>}
             </span>
             @if (Model.Data.IsPublished)
             {
-                <span>
-                    Published @Model.Data.Published.Value.ToShortDateString()
-                </span>
-            }
+<span>
+    Published @Model.Data.Published.Value.ToShortDateString()
+</span>     }
             @if (Model.Data.EnableComments && Model.Data.CommentCount > 0)
             {
-                <span>
-                    <a href="#comments">@Model.Data.CommentCount @(Model.Data.CommentCount == 1 ? "comment" : "comments")</a>
-                </span>
-            }
+<span>
+    <a href="#comments">@Model.Data.CommentCount @(Model.Data.CommentCount == 1 ? "comment" : "comments")</a>
+</span>     }
         </p>
         @if (!string.IsNullOrWhiteSpace(Model.Data.Excerpt))
         {
-            <div class="row justify-content-center">
-                <div class="col-lg-8 lead">
-                    @Html.Raw(Model.Data.Excerpt)
-                </div>
-            </div>
-        }
+<div class="row justify-content-center">
+    <div class="col-lg-8 lead">
+        @Html.Raw(Model.Data.Excerpt)
+    </div>
+</div>}
     </div>
 </header>
 
@@ -55,56 +52,58 @@
             Your browser does not support the audio tag.
         </audio>
     </div>
+    <div class="container text-center mb-3 mt-2">
+        <div class="fb-share-button" data-href="@UriHelper.GetDisplayUrl(Request)" data-layout="button_count" data-size="large">
+            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+        </div>
+    </div>
     <div class="container p-5 mb-4 bg-light">
         @Html.Raw(Model.Data.Episode.ShowNotes)
     </div>
     @foreach (var block in Model.Data.Blocks)
     {
-        <div class="block @block.CssName()">
-            <div class="container">
-                @Html.DisplayFor(m => block, block.GetType().Name)
-            </div>
-        </div>
-    }
+<div class="block @block.CssName()">
+    <div class="container">
+        @Html.DisplayFor(m => block, block.GetType().Name)
+    </div>
+</div>}
     @if (Model.Data.EnableComments)
     {
-        <div id="comments" class="container comments">
-            @if (Model.Data.IsCommentsOpen)
-            {
-                <div class="alert alert-comment mt-2 mb-5">
-                    <form asp-page-handler="SaveComment" method="post">
-                        @Html.AntiForgeryToken()
-                        @Html.Hidden("Id", Model.Data.Id)
+<div id="comments" class="container comments">
+    @if (Model.Data.IsCommentsOpen)
+    {
+<div class="alert alert-comment mt-2 mb-5">
+    <form asp-page-handler="SaveComment" method="post">
+        @Html.AntiForgeryToken()
+        @Html.Hidden("Id", Model.Data.Id)
 
-                        <h3 class="mb-3">Leave a comment</h3>
-                        <p class="mb-4">
-                            Please note that we won't show your email to others, or use it for sending
-                            unwanted emails. We will only use it to render your Gravatar image and to
-                            validate you as a real person.
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input name="CommentAuthor" type="text" class="form-control" placeholder="Your name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <input name="CommentEmail" type="text" class="form-control" placeholder="Your email address">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input name="CommentUrl" type="text" class="form-control" placeholder="An (optional) URL to your website">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="CommentBody" rows="6" class="form-control" placeholder="Your awesome comment"></textarea>
-                        </div>
-                        <div class="form-group text-left">
-                            <button class="btn btn-success">Post Comment</button>
-                        </div>
-                    </form>
+        <h3 class="mb-3">Leave a comment</h3>
+        <p class="mb-4">
+            Please note that we won't show your email to others, or use it for sending
+            unwanted emails. We will only use it to render your Gravatar image and to
+            validate you as a real person.
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="CommentAuthor" type="text" class="form-control" placeholder="Your name">
                 </div>
-            }
-            @Html.DisplayFor(m => m.Comments)
+            </div>
+            <div class="col-md-6">
+                <input name="CommentEmail" type="text" class="form-control" placeholder="Your email address">
+            </div>
         </div>
-    }
+        <div class="form-group">
+            <input name="CommentUrl" type="text" class="form-control" placeholder="An (optional) URL to your website">
+        </div>
+        <div class="form-group">
+            <textarea name="CommentBody" rows="6" class="form-control" placeholder="Your awesome comment"></textarea>
+        </div>
+        <div class="form-group text-left">
+            <button class="btn btn-success">Post Comment</button>
+        </div>
+    </form>
+</div>}
+    @Html.DisplayFor(m => m.Comments)
+</div>}
 </main>
