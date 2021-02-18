@@ -10,7 +10,7 @@ using Piranha.Extend;
 
 namespace PinoyDevs.Models
 {
-    [PostType(Title = "Episode", UseExcerpt = false, UseBlocks = false, UsePrimaryImage = false)]
+    [PostType(Title = "Episode", UseExcerpt = true, UseBlocks = true, UsePrimaryImage = true)]
     [PostTypeRoute(Title = "Default", Route = "/episode")]
     public class EpisodePost: Post<EpisodePost>
     {

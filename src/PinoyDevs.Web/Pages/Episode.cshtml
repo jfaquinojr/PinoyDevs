@@ -47,18 +47,20 @@
 </header>
 
 <main>
-    <div class="container text-center">
-        <audio width="100%" controls>
-            <source src="@Url.Content(Model.Data.Episode.Audio.Media.PublicUrl)" type="">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="container text-center mb-3 mt-2">
+    @*<div class="container text-center mb-3 mt-2">
         <div class="fb-share-button" data-href="@UriHelper.GetDisplayUrl(Request)" data-layout="button_count" data-size="large">
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
         </div>
-    </div>
-    <div class="container p-5 mb-4 bg-light">
+    </div>*@
+    <div class="container p-5 mb-4 jumbotron">
+
+        <div class="text-center mb-3">
+            <audio width="100%" controls>
+                <source src="@Url.Content(Model.Data.Episode.Audio.Media?.PublicUrl)" type="">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+
         @Html.Raw(Model.Data.Episode.ShowNotes)
     </div>
     @foreach (var block in Model.Data.Blocks)
@@ -70,7 +72,7 @@
 </div>}
     @if (Model.Data.EnableComments)
     {
-<div id="comments" class="container comments">
+<div id="comments" class="container comments mt-5">
     @if (Model.Data.IsCommentsOpen)
     {
 
@@ -95,6 +97,6 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     }
-    
+
 </div>}
 </main>

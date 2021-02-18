@@ -21,29 +21,29 @@
     <div class="container">
         @for (var n = 0; n < posts; n += 2)
         {
-            <div class="row">
-                @for (var i = n; i < Math.Min(posts, n + 2); i++)
-                {
-                    var post = Model.Archive.Posts[i];
 
-                    <div class="col-md-12">
-                        <article class="w-100">
-                            <header class="mouse-over bg-light ">
-                                <h3>@post.Title</h3>
-                                
-                                <p>@Html.Raw(post.Episode.Summary)</p>
-                                <a href="@post.Permalink" class="btn btn-primary btn-sm">Show more</a>
+        <div class="list-group">
+            @for (var i = n; i < Math.Min(posts, n + 2); i++)
+            {
+                var post = Model.Archive.Posts[i];
 
-                            </header>
-                        </article>
+
+                <a href="@post.Permalink" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@post.Title</h5>
+                        <small>@post.Created.Humanize(false)</small>
                     </div>
-                    @if (i == 0)
-                    {
-                        n--;
-                        break;
-                    }
+                    <p class="mb-1">@Html.Raw(post.Episode.Summary)</p>
+                    <small>Donec id elit non mi porta.</small>
+                </a>
+
+                @if (i == 0)
+                {
+                    n--;
+                    break;
                 }
-            </div>
+            }
+        </div>
         }
     </div>
     @foreach (var block in Model.Data.Blocks)

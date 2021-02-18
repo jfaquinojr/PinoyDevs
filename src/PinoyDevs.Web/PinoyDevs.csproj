@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\assets\css\style.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Humanizer.Core" Version="2.8.26" />
     <PackageReference Include="Piranha" Version="8.4.2" />
     <PackageReference Include="Piranha.AspNetCore" Version="8.4.1" />
     <PackageReference Include="Piranha.AspNetCore.Identity.SQLite" Version="8.4.0" />
@@ -15,6 +24,14 @@
     <PackageReference Include="Piranha.Local.FileStorage" Version="8.4.0" />
     <PackageReference Include="Piranha.Manager" Version="8.4.1" />
     <PackageReference Include="Piranha.Manager.TinyMCE" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
   </ItemGroup>
 
 </Project>

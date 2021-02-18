@@ -59,43 +59,30 @@
     }
     @if (Model.Data.EnableComments)
     {
-        <div id="comments" class="container comments">
-            @if (Model.Data.IsCommentsOpen)
-            {
-                <div class="alert alert-comment mt-2 mb-5">
-                    <form asp-page-handler="SaveComment" method="post">
-                        @Html.AntiForgeryToken()
-                        @Html.Hidden("Id", Model.Data.Id)
+<div id="comments" class="container comments">
 
-                        <h3 class="mb-3">Leave a comment</h3>
-                        <p class="mb-4">
-                            Please note that we won't show your email to others, or use it for sending
-                            unwanted emails. We will only use it to render your Gravatar image and to
-                            validate you as a real person.
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input name="CommentAuthor" type="text" class="form-control" placeholder="Your name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <input name="CommentEmail" type="text" class="form-control" placeholder="Your email address">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input name="CommentUrl" type="text" class="form-control" placeholder="An (optional) URL to your website">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="CommentBody" rows="6" class="form-control" placeholder="Your awesome comment"></textarea>
-                        </div>
-                        <div class="form-group text-left">
-                            <button class="btn btn-success">Post Comment</button>
-                        </div>
-                    </form>
-                </div>
-            }
-            @Html.DisplayFor(m => m.Comments)
-        </div>
+
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://pinoydevs.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
     }
 </main>
