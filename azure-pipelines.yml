@@ -31,10 +31,10 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    arguments: '-o ''$(Build.ArtifactStagingDirectory)'''
-    modifyOutputPath: false
+    command: 'custom'
+    custom: 'publish'
+    arguments: '-o $(Build.ArtifactStagingDirectory)'
+    configuration: '$(buildConfiguration)'
 
     
 
